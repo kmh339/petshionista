@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:petshionista/presentation/widgets/custom_app_bar.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:petshionista/domain/usecases/cubits/auth/auth_cubit.dart';
+import 'package:petshionista/presentation/features/splash_screen.dart';
 
 class HomeForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(
-        title: '홈',
+      body: Container(
+        child: Center(
+          child: Text('home'),
+        ),
       ),
     );
   }

@@ -5,7 +5,7 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.lightBlueAccent,
-      child: Center(
+      child: const Center(
         child: Text(
           'Splash',
         ),
