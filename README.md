@@ -1,6 +1,9 @@
 # petshionista
 
-A new Flutter project.
+사랑하는 반려동물들의 사진을 올리는 앱.
+
+## Using Architecture
+- [Clean Architecture](https://codeburst.io/using-clean-architecture-in-flutter-d0437d0c7f87)
 
 ## Getting Started
 
