@@ -13,6 +13,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
       title: Text(
         title,
       ),
+      elevation: 0,
     );
   }
 

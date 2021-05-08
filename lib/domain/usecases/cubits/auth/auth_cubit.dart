@@ -33,4 +33,9 @@ class AuthCubit extends Cubit<AuthState> {
       emit(AuthFailure());
     }
   }
+
+  Future<void> logout() async {
+    emit(AuthInProgress());
+    emit(AuthFailure());
+  }
 }

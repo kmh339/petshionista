@@ -5,6 +5,7 @@ import 'package:petshionista/domain/repositories/auth_repository.dart';
 import 'package:petshionista/domain/usecases/cubits/auth/auth_cubit.dart';
 import 'package:petshionista/presentation/core/constants.dart';
 import 'package:petshionista/presentation/features/home/views/home_page.dart';
+import 'package:petshionista/presentation/features/login/views/login_page.dart';
 import 'package:petshionista/presentation/features/splash_screen.dart';
 
 void main() {
@@ -31,7 +32,7 @@ class Petshionistar extends StatelessWidget {
         body: BlocBuilder<AuthCubit, AuthState>(
           builder: (BuildContext buildContext, AuthState state) {
             if (state is AuthFailure) {
-              return Container();
+              return LoginPage();
             }
             if (state is AuthSuccess) {
               return HomePage();
