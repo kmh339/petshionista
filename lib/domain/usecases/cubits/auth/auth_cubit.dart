@@ -15,7 +15,8 @@ class AuthCubit extends Cubit<AuthState> {
     emit(AuthInProgress());
     try {
       await authRepository.authenticate();
-      emit(AuthSuccess());
+      // emit(AuthSuccess());
+      emit(AuthFailure());
     } catch (e) {
       print(']-----] appInit [-----[ ${e.toString()}');
       emit(AuthFailure());
