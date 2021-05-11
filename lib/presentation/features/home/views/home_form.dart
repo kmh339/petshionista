@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:petshionista/presentation/features/feeds/views/feeds_page.dart';
 import 'package:petshionista/presentation/features/home/controller/home_control_cubit.dart';
+import 'package:petshionista/presentation/features/my_feeds/views/my_feeds_page.dart';
+import 'package:petshionista/presentation/features/my_friends/views/my_friends_page.dart';
 import 'package:petshionista/presentation/features/profile/views/profile_page.dart';
 
 class HomeForm extends StatefulWidget {
@@ -22,6 +24,8 @@ class _HomeFormState extends State<HomeForm> {
             index: _tabIndex,
             children: <Widget>[
               FeedsPage(),
+              MyFriendsPage(),
+              MyFeedsPage(),
               ProfilePage(),
             ],
           );
@@ -37,21 +41,49 @@ class _HomeFormState extends State<HomeForm> {
       bottomNavigationBar: BottomNavigationBar(
         onTap: (int tabIndex) => context.read<HomeControlCubit>().changeTab(tabIndex: tabIndex),
         currentIndex: _tabIndex,
+        type: BottomNavigationBarType.fixed,
         selectedFontSize: 12,
         selectedItemColor: Colors.black,
         unselectedFontSize: 12,
         unselectedItemColor: Colors.grey,
+        showSelectedLabels: true,
+        showUnselectedLabels: true,
+        elevation: 1,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            label: 'feeds',
+            label: '피드',
             icon: Icon(
-              CupertinoIcons.home,
+              CupertinoIcons.house,
+            ),
+            activeIcon: Icon(
+              CupertinoIcons.house_fill,
             ),
           ),
           BottomNavigationBarItem(
-            label: 'profile',
+            label: '내 친구',
             icon: Icon(
-              CupertinoIcons.profile_circled,
+              CupertinoIcons.person_2,
+            ),
+            activeIcon: Icon(
+              CupertinoIcons.person_2_fill,
+            ),
+          ),
+          BottomNavigationBarItem(
+            label: '내 피드',
+            icon: Icon(
+              CupertinoIcons.today,
+            ),
+            activeIcon: Icon(
+              CupertinoIcons.today_fill,
+            ),
+          ),
+          BottomNavigationBarItem(
+            label: '프로필',
+            icon: Icon(
+              CupertinoIcons.person_circle,
+            ),
+            activeIcon: Icon(
+              CupertinoIcons.person_circle_fill,
             ),
           ),
         ],

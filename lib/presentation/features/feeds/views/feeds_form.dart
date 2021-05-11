@@ -6,7 +6,7 @@ class FeedsForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(
-        title: 'Feeds',
+        title: 'Petshionista',
       ),
     );
   }
