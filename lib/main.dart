@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
-import 'package:petshionista/app/data/repositories/auth_repository_impl.dart';
-import 'package:petshionista/app/presentation/pages/splash/splash_view.dart';
+import 'package:petshionista/app/presentation/pages/home/views/home_view.dart';
 import 'package:petshionista/app/presentation/core/constants.dart';
 
 void main() {
@@ -17,7 +15,7 @@ class Petshionistar extends StatelessWidget {
     return GetMaterialApp(
       title: 'Petshionista',
       theme: customThemeData,
-      home: Scaffold(body: Container()),
+      home: HomeView(),
     );
   }
 }
