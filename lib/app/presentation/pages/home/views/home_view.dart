@@ -8,14 +8,13 @@ import 'package:petshionista/app/presentation/pages/my_feeds/views/my_feeds_view
 import 'package:petshionista/app/presentation/pages/my_friends/views/my_friends_view.dart';
 import 'package:petshionista/app/presentation/pages/profile/views/profile_view.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<HomeController>(
-      init: HomeController(),
-      builder: (HomeController _controller) => Scaffold(
+    return GetX<HomeController>(
+      builder: (_) => Scaffold(
         body: IndexedStack(
-          index: _controller.tabIndex,
+          index: controller.tabIndex.value,
           children: <Widget>[
             FeedsView(),
             MyFriendsView(),
@@ -24,8 +23,8 @@ class HomeView extends StatelessWidget {
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(
-          onTap: (int tabIndex) => _controller.updateIndex(tabIndex),
-          currentIndex: _controller.tabIndex,
+          onTap: (int tabIndex) => controller.updateTab(tabIndex),
+          currentIndex: controller.tabIndex.value,
           type: BottomNavigationBarType.fixed,
           selectedFontSize: 12,
           selectedItemColor: Colors.black,

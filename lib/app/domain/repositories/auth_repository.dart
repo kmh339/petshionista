@@ -3,7 +3,7 @@ import 'package:petshionista/app/data/exceptions/custom_exceptions.dart';
 class AuthRepository {
   Future<void> authenticate() async {
     try {
-      Future<void>.delayed(const Duration(microseconds: 300));
+      Future<void>.delayed(const Duration(microseconds: 400));
     } catch (e) {
       throw BadRequestException(message: '${e.toString()} at authenticate');
     }

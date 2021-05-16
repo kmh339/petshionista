@@ -1,6 +1,12 @@
 import 'package:get/get.dart';
 import 'package:petshionista/app/domain/repositories/auth_repository.dart';
 
+enum AuthStatus {
+  idle,
+  authenticated,
+  unauthenticated,
+}
+
 class AuthController extends GetxController {
   AuthController({
     required AuthRepository authRepository,
@@ -8,12 +14,22 @@ class AuthController extends GetxController {
 
   final AuthRepository _authRepository;
 
-  bool isLoggedIn = false;
+  late AuthStatus authStatus;
 
-  Future<void> signIn() async {
+  @override
+  void onInit() {
+    super.onInit();
+
+    authStatus = AuthStatus.idle;
+
+    _appStart();
+  }
+
+  Future<void> _appStart() async {
     try {
+      await Future<void>.delayed(const Duration(milliseconds: 2000));
       await _authRepository.authenticate();
-      isLoggedIn = true;
+      authStatus = AuthStatus.authenticated;
       update();
     } catch (e) {
       print(']-----] appStart [-----[ ${e.toString()}');
@@ -25,9 +41,24 @@ class AuthController extends GetxController {
     }
   }
 
+  Future<void> signIn() async {
+    try {
+      await _authRepository.authenticate();
+      authStatus = AuthStatus.authenticated;
+      update();
+    } catch (e) {
+      print(']-----] signIn [-----[ ${e.toString()}');
+      Get.snackbar<void>(
+        '로그인',
+        '실패',
+        snackPosition: SnackPosition.BOTTOM,
+      );
+    }
+  }
+
   Future<void> signOut() async {
     try {
-      isLoggedIn = false;
+      authStatus = AuthStatus.unauthenticated;
       update();
     } catch (e) {
       print(']-----] appStart [-----[ ${e.toString()}');

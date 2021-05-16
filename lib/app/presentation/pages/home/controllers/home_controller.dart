@@ -1,10 +1,9 @@
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
-  int tabIndex = 0;
+  Rx<int> tabIndex = 0.obs;
 
-  void updateIndex(int index) {
-    tabIndex = index;
-    update();
+  void updateTab(int index) {
+    tabIndex.value = index;
   }
 }
